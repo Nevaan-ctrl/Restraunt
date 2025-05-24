@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Night Only - Reserve Your Table</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff8f0;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+    form {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #ff7f50;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #e06c3d;
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    #confirmationModal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    #confirmationBox {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    #confirmationBox button {
+      margin-top: 1rem;
+      background-color: #4CAF50;
+    }
+  </style>
+</head>
+<body>
+  <h1>Reserve Your Table</h1>
+  <p>Join us for a magical one-night-only dining experience.</p>
+  <form id="reservationForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <input type="tel" name="phone" placeholder="Your Phone Number" required>
+    <select name="time" required>
+      <option value="">Select Time</option>
+      <option value="6:00 PM">6:00 PM</option>
+      <option value="7:00 PM">7:00 PM</option>
+      <option value="8:00 PM">8:00 PM</option>
+      <option value="9:00 PM">9:00 PM</option>
+    </select>
+    <input type="number" name="guests" placeholder="Number of Guests" min="1" max="10" required>
+    <button type="submit">Book Now</button>
+  </form>
+
+  <div id="confirmationModal">
+    <div id="confirmationBox">
+      <h2>Confirm Your Reservation</h2>
+      <p>Are you sure you want to book this table?</p>
+      <button id="confirmBtn">Yes, Confirm</button>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 One Night Only. All rights reserved.
+  </footer>
+
+  <script>
+    const form = document.getElementById('reservationForm');
+    const modal = document.getElementById('confirmationModal');
+    const confirmBtn = document.getElementById('confirmBtn');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      modal.style.display = 'flex';
+    });
+
+    confirmBtn.addEventListener('click', function() {
+      modal.style.display = 'none';
+      form.submit();
+    });
+  </script>
+</body>
+</html>
